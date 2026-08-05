@@ -14,6 +14,7 @@ test('Live Code Final Pharse 2', async({loginPage,productPage,cartPage}) => {
         await productPage.clickOnCart();
     });
     
+    // Testcase3
     await test.step(' Verify cart and Checkout', async() => {
         await cartPage.verifyItemCart('Sauce Labs Backpack');
         await cartPage.clickCheckout();
