@@ -13,7 +13,8 @@ test.describe('DataDriven E2E', () => {
             const reponse = await request.post(`${baseURL}/api/users`, {
                 headers: {
                     'x-api-key': apiKey,
-                    'Conten-Type': 'application/json'
+                    'Conten-Type': 'application/json',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
                 },
                 data: {
                     name: user.name,
