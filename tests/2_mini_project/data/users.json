@@ -1,0 +1,17 @@
+[   
+    {
+        "testName": "Tạo User vị trí Leader",
+        "name": "Playwright QA Lead",
+        "job": "Software Engineer in Test"
+  },
+  {
+        "testName": "Tạo User vị trí Senior QA",
+        "name": "Automation Senior",
+        "job": "QA Specialist"
+  },
+  {
+        "testName": "Tạo User vị trí Junior QA",
+        "name": "Automation Junior",
+        "job": "Tester"
+  }  
+]
