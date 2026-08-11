@@ -20,10 +20,10 @@ test.describe('Mini Project POM', () => {
             }
         });
 
-        // const responseBody = await loginResponse.json();
-        // const token = responseBody.token;
+        const responseBody = await loginResponse.json();
+        const token = responseBody.token || '';
 
-        const {token} = await loginResponse.json();
+        //const {token} = await loginResponse.json();
 
         await context.addCookies([{
             name: 'session_token',
