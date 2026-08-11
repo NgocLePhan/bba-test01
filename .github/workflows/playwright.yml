@@ -37,9 +37,8 @@ name: Playwright Mini Project CI/CD
 on:
   push:
     branches: [ main, master ]
-    # 🔴 1. CHỈ TRIGGER KHI CÓ CHANGE TRONG FOLDER MINI PROJECT
     paths:
-      - 'tests/2_mini_project**'
+      - 'tests/2_mini_project/**'
       - '.github/workflows/playwright.yml'
   pull_request:
     branches: [ main, master ]
@@ -52,25 +51,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: 1. Checkout repository code
       uses: actions/checkout@v4
 
-    - name: Setup Node.js
+    - name: 2. Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: lts/*
+        node-version: 22 # 🟢 Dùng Node 22 để tránh warning phiên bản cũ
 
-    - name: Install dependencies
+    - name: 3. Install dependencies
       run: npm ci
 
-    - name: Install Playwright Browsers
+    - name: 4. Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    # 🔴 2. CHỈ TRỎ LỆNH CHẠY VÀO ĐÚNG THƯ MỤC MINI PROJECT
-    - name: Run Only Mini Project Tests
-      run: npx playwright test tests/git add2_mini_project
+    - name: 5. Run Only Mini Project Tests
+      # 🟢 TRUYỀN ENV TRỰC TIẾP CHO CI/CD TẠI ĐÂY
+      env:
+        API_BASE_URL: https://reqres.in
+        API_KEY: reqres-free-key
+      run: npx playwright test tests/2_mini_project
 
-    - name: Upload HTML Report
+    - name: 6. Upload HTML Report
       uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
